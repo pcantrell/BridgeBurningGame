@@ -24,12 +24,9 @@ import com.mygdx.game.GraphicalObjects.*;
 
 import java.util.*;
 
-public class MainGame extends Stage implements Screen{
+public class MainGame extends Stage implements Screen {
 
     private final GameLauncher game;
-
-    private final int SCREEN_WIDTH = 800;
-    private final int SCREEN_HEIGHT = 480;
 
     private ParticleEffect fireEffect;
 
@@ -73,7 +70,6 @@ public class MainGame extends Stage implements Screen{
 
 
     public MainGame(GameLauncher game){
-
         this.game = game;
         constructionMode = true;
 
@@ -98,8 +94,8 @@ public class MainGame extends Stage implements Screen{
         // it creates a WORLD that is 800 x 480 units wide. it is the camera that controls the coordinate system that positions stuff on the screen
         //the origin (0, 0) of this coordinate system is in the lower left corner by default. It is possible to change
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, SCREEN_WIDTH, SCREEN_HEIGHT);
-        viewport = new StretchViewport(SCREEN_WIDTH,SCREEN_HEIGHT,camera);
+        camera.setToOrtho(false, GameConstants.SCREEN_WIDTH, GameConstants.SCREEN_HEIGHT);
+        viewport = new StretchViewport(GameConstants.SCREEN_WIDTH, GameConstants.SCREEN_HEIGHT, camera);
         setViewport(viewport);
 
         box2DDebugRenderer = new Box2DDebugRenderer();
