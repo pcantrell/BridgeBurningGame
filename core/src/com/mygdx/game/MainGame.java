@@ -34,12 +34,9 @@ public class MainGame extends Stage implements Screen {
 
     private Music fireSound;
 
-    private Texture leftTex;
-    private Texture rightTex;
     private Texture burnImg;
     private Texture constructImg;
 
-    private Texture background;
     private Sprite backgroundSprite;
     //Makes a box2d physics environment that sets gravity
     public final World WORLD = new World(new Vector2(0, -98.1f), true);
@@ -78,13 +75,9 @@ public class MainGame extends Stage implements Screen {
         fireEffect = new ParticleEffect();
         fireEffect.load(Gdx.files.internal("Effect9.p"), Gdx.files.internal(""));
 
-        leftTex = new Texture("LeftCliff.png");
-        rightTex = new Texture("RightCliff.png");
-        background = new Texture("BG1.png");
+        backgroundSprite = new Sprite(new Texture("BG1.png"));
 
-        backgroundSprite = new Sprite(background);
-
-        drawCliffs();
+        addCliffs();
 
         buildHandler = new BuildHandler(WORLD, this, fireEffect, leftCliff, rightCliff);
 
@@ -302,11 +295,11 @@ public class MainGame extends Stage implements Screen {
      * is not seen on screen. This is called on startup and every time
      * the game is reset.
      **/
-    public void drawCliffs(){
-        leftTex = new Texture("LeftCliff.png");
-        rightTex = new Texture("RightCliff.png");
+    public void addCliffs(){
+        Texture leftTex = new Texture("LeftCliff.png");
+        Texture rightTex = new Texture("RightCliff.png");
         leftCliff = new BackgroundCliff(leftTex, 0, 0, WORLD, true);
-        rightCliff = new BackgroundCliff(rightTex,800-rightTex.getWidth(), 0, WORLD, false);
+        rightCliff = new BackgroundCliff(rightTex, 800 - rightTex.getWidth(), 0, WORLD, false);
         //This is for future use. The bottom would play a sound when things make contact with it, making it seem like a real valley.
         //bottom = new BackgroundCliff(leftTex, leftCliff.getWidth(), -leftCliff.getHeight() - 100, WORLD, true);
         this.addActor(leftCliff);
@@ -343,7 +336,7 @@ public class MainGame extends Stage implements Screen {
 
 
         fireSound.pause();
-        drawCliffs();
+        addCliffs();
         constructionMode = true;
         createButtons();
         buildHandler.setLeftCliff(leftCliff);
