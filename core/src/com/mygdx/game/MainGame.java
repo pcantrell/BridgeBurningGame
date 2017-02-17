@@ -46,7 +46,6 @@ public class MainGame extends Stage implements Screen {
 
     private BackgroundCliff leftCliff;
     private BackgroundCliff rightCliff;
-    private BackgroundCliff bottom;
 
     private ToggleButton toggleButton;
     private RefreshButton refreshButton;
@@ -72,7 +71,6 @@ public class MainGame extends Stage implements Screen {
     public MainGame(GameLauncher game){
         this.game = game;
         constructionMode = true;
-
 
         game.font.setColor(Color.WHITE);
 
