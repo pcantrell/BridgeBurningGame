@@ -35,7 +35,7 @@ public class BridgeUnit extends Actor{
     boolean createdByPlayer;
     private Texture alternative = new Texture("PaperUser.png");
     private Texture ash = new Texture("ash.png");
-    
+
     public BridgeUnit(Material material, World world, float xPosition, float yPosition, ParticleEffect fireEffect){
 
         //Sets texture to image in assets folder
@@ -47,7 +47,7 @@ public class BridgeUnit extends Actor{
 
         this.setName("Bridge Unit");
 
-        this.durability = material.getDurability();
+        this.durability = Math.round(material.getDurability() * (random.nextFloat() * 1.6f + 0.3f));
         this.alternative = new Texture(material.getAlternative());
         this.fireEffect = fireEffect;
 
